@@ -189,10 +189,11 @@ jobs:
             fi
           done
           # 写入哈希信息到环境变量
-          echo "HASH_INFO<<EOF" >> $GITHUB_ENV
-          echo "$HASH_INFO" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
+          # echo "HASH_INFO<<EOF" >> $GITHUB_ENV
+          # echo "$HASH_INFO" >> $GITHUB_ENV
+          # echo "EOF" >> $GITHUB_ENV
+          echo "$HASH_INFO" > ./downloading/hash.txt
+          
       # 步骤5：发布Release（同时显示两个时间）
       - name: 发布 ${{ matrix.program_base }} 到 Release
         if: steps.check_tag.outputs.tag_exists == 'false'
@@ -201,10 +202,10 @@ jobs:
           tag_name: ${{ steps.read_info.outputs.tag }}
           name: ${{ steps.read_info.outputs.title }}
           files: ./downloading/*
-          body: |
-            ${{ env.RELEASE_TIME }}
-            
-            ${{ env.HASH_INFO }}
+          # body: |
+          #   ${{ env.RELEASE_TIME }}
+          #   
+          #   ${{ env.HASH_INFO }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
