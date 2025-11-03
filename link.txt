@@ -1,0 +1,10 @@
+name:
+vs_Enterprise.exe
+link:
+https://aka.ms/vs/17/release/vs_Enterprise.exe
+zipBaseName:
+VS2022Enterprise.
+
+
+
+
